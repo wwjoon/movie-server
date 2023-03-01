@@ -9,6 +9,7 @@ export default gql`
 
   type Mutation {
     postTweet(text: String!, userId: ID!): Tweet
+    updateTweet(id: ID!, text: String!): Boolean!
     deleteTweet(id: ID!): Boolean!
   }
 
