@@ -3,6 +3,7 @@ import { gql } from "apollo-server";
 /* SDL, Schema Definition Language */
 export default gql`
   type Query {
+    allUsers: [User!]!
     allTweets: [Tweet!]!
     tweet(id: ID!): Tweet
   }
@@ -20,6 +21,8 @@ export default gql`
   }
   type User {
     id: ID!
-    username: String!
+    firstName: String!
+    lastName: String!
+    fullName: String!
   }
 `;

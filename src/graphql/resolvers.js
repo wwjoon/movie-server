@@ -1,9 +1,24 @@
 import typeDefs from "./schema.js";
 
 let tweets = [];
+let users = [
+  {
+    id: "1",
+    firstName: "Eron",
+    lastName: "Musk",
+  },
+];
 
 const resolvers = {
+  User: {
+    fullName({ firstName, lastName }) {
+      return `${firstName} ${lastName}`;
+    },
+  },
   Query: {
+    allUsers() {
+      return users;
+    },
     allTweets() {
       return tweets;
     },
