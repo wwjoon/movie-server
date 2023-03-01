@@ -11,9 +11,15 @@ export default gql`
   type Mutation {
     postTweet(text: String!, userId: ID!): Tweet
     updateTweet(id: ID!, text: String!): Boolean!
+    """
+    Delete a Tweet if found, else return  false
+    """
     deleteTweet(id: ID!): Boolean!
   }
 
+  """
+  Annotation function check in Apollo Browser
+  """
   type Tweet {
     id: ID!
     text: String!
