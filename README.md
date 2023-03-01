@@ -194,4 +194,5 @@ type User {
 ## <a name="reference"></a>Reference
 
 https://nomadcoders.co/graphql-for-beginners
+
 https://github.com/Lecture-Summary
