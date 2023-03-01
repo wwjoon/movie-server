@@ -17,7 +17,7 @@ export default gql`
   type Tweet {
     id: ID!
     text: String!
-    author: User!
+    author: User
   }
   type User {
     id: ID!
