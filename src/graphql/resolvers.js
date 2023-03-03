@@ -1,29 +1,8 @@
+import fetch from "node-fetch";
 import typeDefs from "./schema.js";
+import data from "./data.js";
 
-let tweets = [
-  {
-    id: "1",
-    text: "first one!",
-    userId: "2",
-  },
-  {
-    id: "2",
-    text: "second one!",
-    userId: "1",
-  },
-];
-let users = [
-  {
-    id: "1",
-    firstName: "Eron",
-    lastName: "Musk",
-  },
-  {
-    id: "2",
-    firstName: "Gates",
-    lastName: "Bill",
-  },
-];
+let { tweets, users } = data;
 
 const resolvers = {
   User: {
@@ -37,11 +16,23 @@ const resolvers = {
     },
   },
   Query: {
+    allMovies() {
+      return fetch("https://yts.mx/api/v2/list_movies.json")
+        .then((r) => r.json())
+        .then((json) => json.data.movies);
+    },
     allUsers() {
       return users;
     },
     allTweets() {
       return tweets;
+    },
+    movie(__, { id: movie_id }) {
+      return fetch(
+        `https://yts.mx/api/v2/movie_details.json?movie_id=${movie_id}`
+      )
+        .then((r) => r.json())
+        .then((json) => json.data.movie);
     },
     tweet(__, { id }) {
       return tweets.find((tweet) => tweet.id === id);
