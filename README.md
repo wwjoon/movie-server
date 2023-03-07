@@ -36,7 +36,8 @@ movie {
 }
 ```
 
-영화에 대한 정보의 title만 보여주는 앱을 제작한다고 가정한다. REST API를 fetching하면 id, title, summary... 등 모든 정보를 받게 됩니다.
+영화에 대한 정보의 title만 보여주는 앱을 제작한다 가정하고
+REST API를 fetching하면 id, title, summary... 등 모든 정보를 받게 됩니다.
 
 내가 필요한 정보는 title인데 다른 모든 정보를 불러오게되는 것을 over-fetching 이라고 합니다.
 GraphQL을 사용하면 API에 GraphQL 쿼리를 보내고 필요한 것만 정확히 얻을 수 있습니다.
@@ -49,7 +50,9 @@ GraphQL을 사용하면 API에 GraphQL 쿼리를 보내고 필요한 것만 정�
 
 필요한 데이터보다 적은 데이터를 fetch하는 것을 말합니다.
 
-일반적인 REST API는 여러 URL에서 로딩해야 하지만 GraphQL API는 앱에 필요한 모든 데이터를 단일 request로 가져옵니다. GraphQL을 사용하는 앱은 느린 모바일 네트워크 연결에서도 빠를 수 있습니다.
+일반적인 REST API는 여러 URL에서 로딩해야 합니다.
+하지만 GraphQL API는 앱에 필요한 모든 데이터를 단일 request로 가져옵니다.
+GraphQL을 사용하는 앱은 느린 모바일 네트워크 연결에서도 빠를 수 있습니다.
 
 > Get many resources in a single request<br/>
 >
@@ -57,7 +60,11 @@ GraphQL을 사용하면 API에 GraphQL 쿼리를 보내고 필요한 것만 정�
 
 ## <a name="2"></a>Apollo Server
 
-Apollo 서버는 Apollo 클라이언트를 포함한 모든 GraphQL 클라이언트와 호환되는 사양 준수의 오픈 소스 GraphQL 서버입니다. 모든 소스의 데이터를 사용할 수 있는 자체 문서화 가능한 production-ready GraphQL API를 구축하는 가장 좋은 방법입니다.
+Apollo 서버는 Apollo 클라이언트를 포함한
+모든 GraphQL 클라이언트와 호환되는사양 준수의 오픈 소스 GraphQL 서버입니다.
+
+모든 소스의 데이터를 사용할 수 있는 자체 문서화 가능한
+production-ready GraphQL API를 구축하는 가장 좋은 방법입니다.
 
 ```zsh
 npm i apollo-server graphql
@@ -96,7 +103,8 @@ const typeDefs = gql`
 `;
 ```
 
-GraphQL 객체에는 이름과 필드가 있지만, 이러한 필드는 구체적인 데이터로 해석되어야 합니다. Scalar Type은 쿼리의 잎을 나타냅니다.
+GraphQL 객체에는 이름과 필드가 있지만, 이러한 필드는 구체적인 데이터로 해석되어야 합니다.
+Scalar Type은 쿼리의 잎을 나타냅니다.
 
 위 쿼리에서는 `User`의 `id, username`, `Tweet`의 `id, text` 필드가 Scalar Type 입니다.
 
@@ -112,9 +120,11 @@ GraphQL 객체에는 이름과 필드가 있지만, 이러한 필드는 구체�
 
 ## <a name="4"></a>Mutations
 
-GraphQL에 대한 대부분의 논의는 데이터 fetching에 중점을 두지만 완전한 데이터 플랫폼은 서버 측 데이터도 수정할 수 있는 방법 이 필요합니다.
+GraphQL에 대한 대부분의 논의는 데이터 fetching에 중점을 두지만
+완전한 데이터 플랫폼은 서버 측 데이터도 수정할 수 있는 방법 이 필요합니다.
 
-기술적으로 Query로 데이터 수정을 유발할 수 있습니다. 그러나 데이터 수정을 유발하는 모든 작업은 mutation을 통해 명시적으로 보내야한다는 규칙을 설정하는 것이 유용합니다.
+기술적으로 Query로 데이터 수정을 유발할 수 있습니다.
+그러나 데이터 수정을 유발하는 모든 작업은 mutation을 통해 명시적으로 보내야한다는 규칙을 설정하는 것이 유용합니다.
 
 ```js
 type Mutation {
